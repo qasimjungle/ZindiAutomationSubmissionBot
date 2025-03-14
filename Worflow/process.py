@@ -7,6 +7,9 @@ import os
 import re
 import glob
 
+from libraries.utils import remove_subdirectories
+
+
 class ProcessPreparation:
     """processes."""
 
@@ -16,6 +19,9 @@ class ProcessPreparation:
 
     def get_opened_competetion_names_list_make_dirs(self):
         """To get opened competitions name list"""
+        remove_subdirectories(CONFIG.ZindiCompetetionFilesPath.competetion_folder
+                              )
+
         open_challenge_data = self.user.get_opened_challenges(reward="all", kind="competition",
                                                               fixed_index=None, open_competetion=True)
         id_list = open_challenge_data["id"].tolist()

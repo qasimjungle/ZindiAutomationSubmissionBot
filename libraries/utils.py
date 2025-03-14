@@ -2,6 +2,9 @@ import smtplib
 import mimetypes
 import os
 from email.message import EmailMessage
+import shutil
+from libraries.Config import CONFIG
+
 
 
 class Utils:
@@ -74,3 +77,21 @@ class Utils:
         for REPORT_PATH in reports_files_path:
             self.sending_report_using_email(REPORT_PATH)
 
+
+def remove_subdirectories(parent_dir):
+    """Remove all directories inside the given parent directory."""
+    if not os.path.exists(parent_dir):
+        print(f"Path does not exist: {parent_dir}")
+        return
+
+    for item in os.listdir(parent_dir):
+        item_path = os.path.join(parent_dir, item)
+        if os.path.isdir(item_path):
+            try:
+                shutil.rmtree(item_path)
+                print(f"Removed directory: {item_path}")
+            except Exception as e:
+                print(f"Failed to remove {item_path}: {e}")
+
+
+    logger.info("remove sub directory from competition folder")
