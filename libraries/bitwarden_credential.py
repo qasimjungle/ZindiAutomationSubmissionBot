@@ -1,6 +1,8 @@
 import os
 import json
 import subprocess
+
+from libraries.Config import CONFIG
 from libraries.logging_file import logger
 
 
@@ -70,26 +72,8 @@ class BitwardenCredentialManagement:
 
     def get_bitwarden_credentials(self,item_list ):
         """Fetch multiple items from Bitwarden."""
-        items_collection = {}
-        for item in item_list:
-            item_collection = self.get_bitwarden_item(item)
-            items_collection.update(item_collection)
-                # username = item_collection['login']['username']
-                # password = item_collection['login']['password']
-                # self.credentials[item] = {
-                #     'username': username,
-                #     'password': password
-                # }
+        for item_name in item_list:
+            item_data = self.get_bitwarden_item(item_name)
+            if item_data:
+                self.credentials[item_name] = item_data.get("login", {})
         return self.credentials
-
-
-    """<speak>
-    Begin by finding a comfortable position, either sitting or lying down. <break time="5s"/>
-    Gently close your eyes and take a deep breath in through your nose, allowing your lungs to fill completely. <break time="5s"/>
-    Hold for a moment, then exhale slowly through your mouth, releasing any tension. <break time="5s"/>
-    Now, bring your attention to your feet. <break time="5s"/>
-    Notice any sensations you might feel. <break time="5s"/>
-    As you breathe in, imagine sending your breath all the way down to your toes. <break time="5s"/>
-    As you exhale, let go of any tightness or tension in this area. <break time="5s"/>
-</speak>
-"""

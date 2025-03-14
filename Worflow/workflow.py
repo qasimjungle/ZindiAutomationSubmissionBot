@@ -14,8 +14,8 @@ class Processes:
     def __init__(self):
         self.bitwarden = BitwardenCredentialManagement()
         self.credential = self.bitwarden.get_bitwarden_credentials(CONFIG.CredentialsGroups.items_list)
-        self.user = Zindian(username='MuhammadQasimShabbeer',
-                       fixed_password="Qasim7878,,")
+        self.user = Zindian(username=self.credential['Zindi_Credential']['username'],
+                       fixed_password=self.credential['Zindi_Credential']['password'])
         logger.info(" Logged into Zindi Successfully using api.")
         self.report_dataframe = pd.DataFrame()
         self.preparation_process = ProcessPreparation(zindi_user=self.user)
