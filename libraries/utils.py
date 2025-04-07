@@ -34,9 +34,9 @@ class Utils:
             # Email Configuration
             SMTP_SERVER = "smtp.gmail.com"
             SMTP_PORT = 587
-            EMAIL_SENDER = "asadkhanbloch4949@gmail.com"
-            AppPassword = "ccsb uozs vyom pddi"  # Use the generated App Password
-            EMAIL_RECEIVER = "asadkhanbloch4949@gmail.com"
+            EMAIL_SENDER = ####  User Here sender  emails 
+            AppPassword = # Use the generated App Password for gmail account to send gmails 
+            EMAIL_RECEIVER = ######### address of emails reveirer 
             SUBJECT = "Automated Report"
             BODY = "Hello,\n\nPlease find the attached report.\n\nBest Regards, Asad Khan"
 
